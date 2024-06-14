@@ -58,12 +58,21 @@ window.addEventListener("DOMContentLoaded", function () {
     window.location.href = `backoffice.html?id=${product._id}`;
     });
 
-    const deleteBtn = document.createElement("button");
-    deleteBtn.innerText = "Elimina";
-    deleteBtn.classList.add("btn", "btn-outline-danger");
-    deleteBtn.addEventListener('click', function () {
-    colDiv.remove();
-    });
+   const deleteBtn = document.createElement("button");
+   deleteBtn.innerText = "Elimina";
+   deleteBtn.classList.add("btn", "btn-outline-danger");
+
+  deleteBtn.addEventListener('click', function () {
+  const conferma = confirm(`Sei sicuro di voler eliminare "${product.name}"?`);
+
+    if (conferma) {
+        colDiv.remove();
+    } else {
+        
+    }
+});
+
+
         
 
     cardBody.appendChild(cardTitle);
