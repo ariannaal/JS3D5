@@ -57,7 +57,8 @@ window.addEventListener("DOMContentLoaded", function () {
                 description: event.target.elements["edit-description"].value,
                 imageUrl: event.target.elements["image-product"].value,
      };
-    
+     
+     
      console.log(updatedProduct);
 
             fetch(url, {
