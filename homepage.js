@@ -18,7 +18,7 @@ window.addEventListener("DOMContentLoaded", function () {
     img.src = product.imageUrl;
     img.className = "card-img-top";
     img.addEventListener('click', function () {
-    window.location.href = `detail.html?id=${product.id}`;
+    window.location.href = `detail.html?id=${product._id}`;
     });
 
     const cardBody = document.createElement("div");
@@ -28,7 +28,7 @@ window.addEventListener("DOMContentLoaded", function () {
     cardTitle.className = "card-title";
     cardTitle.textContent = product.name;
     cardTitle.addEventListener('click', function () {
-    window.location.href = `detail.html?id=${product.id}`;
+    window.location.href = `detail.html?id=${product._id}`;
     });
 
     const cardBrand = document.createElement("p");
@@ -70,17 +70,18 @@ window.addEventListener("DOMContentLoaded", function () {
         }
     })
              .then(response => {
-        if (response.ok) {
+                 if (response.ok) {
           return response.json();
         } else {
           throw new Error('Errore');
         }
       })
-      .then(data => {
+            .then(data => {
+          console.log(data);
         updateCards(data);
       })
       .catch(error => {
-        console.error("Error fetching data:", error);
+        console.error("Errore", error);
       });
   };
 
