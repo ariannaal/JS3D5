@@ -37,19 +37,49 @@ window.addEventListener("DOMContentLoaded", function () {
     brandSmall.className = "text-muted";
     brandSmall.textContent = `Brand: ${product.brand}`;
     cardBrand.appendChild(brandSmall);
+        
+    const cardDescription = document.createElement("p");
+    cardDescription.className = "card-text";
+    cardDescription.textContent = `Descrizione: ${product.description}`;
 
     const cardPrice = document.createElement("p");
     cardPrice.className = "card-text";
     cardPrice.textContent = `Prezzo: ${product.price}€`;
+        
+
+
+    const modifyContainer = document.createElement("div");
+    modifyContainer.classList.add("d-flex", "justify-content-between" )
+        
+    const modifyBtn = document.createElement("button");
+    modifyBtn.innerText = "Modifica";
+    modifyBtn.classList.add("btn", "btn-outline-success");
+    modifyBtn.addEventListener('click', function () {
+    window.location.href = `backoffice.html?id=${product._id}`;
+    });
+
+    const deleteBtn = document.createElement("button");
+    deleteBtn.innerText = "Elimina";
+    deleteBtn.classList.add("btn", "btn-outline-danger");
+    deleteBtn.addEventListener('click', function () {
+    colDiv.remove();
+    });
+        
 
     cardBody.appendChild(cardTitle);
     cardBody.appendChild(cardBrand);
+    cardBody.appendChild(cardDescription);
     cardBody.appendChild(cardPrice);
 
     cardDiv.appendChild(img);
     cardDiv.appendChild(cardBody);
 
     colDiv.appendChild(cardDiv);
+        
+    cardBody.appendChild(modifyContainer)
+    modifyContainer.appendChild(modifyBtn);
+    modifyContainer.appendChild(deleteBtn);
+    
 
     return colDiv;
     }
